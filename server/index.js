@@ -21,8 +21,7 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
-mongoose.set("strictQuery", false);
-
+mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGO_URL);
 
 app.use("/api/auth", authRoutes);
