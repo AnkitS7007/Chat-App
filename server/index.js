@@ -21,6 +21,9 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
+mongoose.set("strictQuery", false);
+
+mongoose.connect(process.env.MONGO_URL);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
@@ -30,7 +33,7 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: "https://chat-app-320z.onrender.com",
+    origin: "http://localhost:3000",
     credentials: true,
   },
 });
